@@ -31,7 +31,7 @@ grunt.initConfig({
 				}
 			},
 		files : {
-			"test.html" : ["test.jade"]
+			"index.html" : ["index.jade"]
 		}
 	 }	
 	},
