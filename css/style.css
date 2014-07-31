@@ -290,8 +290,10 @@ header {
   background-size: cover;
   width: 100%;
   min-height: 100%;
-  z-index: 10;
-  position: relative; }
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0; }
 
 .button {
   width: 30%;
@@ -299,7 +301,7 @@ header {
   cursor: pointer;
   background-color: green;
   position: absolute;
-  z-index: 20; }
+  z-index: 200; }
 
 .backButton {
   top: 30%;
@@ -337,4 +339,6 @@ figcaption {
   position: absolute;
   bottom: 5%;
   right: 10%;
-  z-index: 30; }
+  z-index: 300; }
+  figcaption #caption {
+    display: none; }

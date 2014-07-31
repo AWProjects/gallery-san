@@ -27,7 +27,7 @@ body,
 html {
 	height: 100%;
 	margin: 0;
-}
+} 
 
 
 header {
@@ -115,8 +115,10 @@ header {
 	background-size: cover;
 	width:100%;
 	min-height: 100%;
-	z-index: 10;
-	position: relative;
+	z-index: 99;
+	position: fixed;
+	top:0;
+	left:0;
 }
 
 .button {
@@ -125,7 +127,7 @@ header {
 	cursor: pointer;
 	background-color: green;
 	position: absolute;
-	z-index: 20;
+	z-index: 200;
 }
 
 .backButton {
@@ -163,13 +165,14 @@ header {
 
 figcaption {
 	//jQuery will reveal this on click of more info button
-	// display:none;
 	@include fontify(16px,400);
 	width: 300px;
 	position: absolute;
 	bottom: 5%;
 	right: 10%;
-	z-index: 30;
-
+	z-index: 300;
+	#caption {
+		display:none;
+	}
 }
 
