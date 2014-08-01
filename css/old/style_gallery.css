@@ -166,19 +166,18 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   box-sizing: border-box;
 }
 
-body,
-html {
-  height: 100%;
-  margin: 0;
+.wrapper {
+  max-width: 1400px;
+  margin: 0 50px;
+  background-color: red;
 }
 
 .imagePanel {
-  position: relative;
-  width: 10;
-  height: 100%;
   background: url("http://placehold.it/400x300");
   background-size: cover;
-  min-height: 100%;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
 }
 
 .button {
@@ -187,21 +186,6 @@ html {
   cursor: pointer;
   background-color: green;
   position: absolute;
-  z-index: 20;
-}
-
-i {
-  position: absolute;
-  top: 40%;
-}
-
-.closeButton {
-  position: absolute;
-  top: 20px;
-  right: 0;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
   z-index: 20;
 }
 
@@ -227,17 +211,15 @@ i {
 }
 
 .toggleCaption {
+  position: absolute;
+  bottom: 5%;
   margin: 0 auto;
   width: 50px;
   height: 50px;
   cursor: pointer;
   text-align: center;
   background-color: yellow;
-  border-radius: 50%;
-}
-.toggleCaption p {
-  padding-top: 15px;
-  margin: 0;
+  border-radius: 100%;
 }
 
 figcaption {
