@@ -7,14 +7,21 @@ head
 	link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,800,900", type="text/css")
 	script(type='text/javascript', src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
 	script(type='text/javascript', src="gallery.js")
+	link(href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet")
 body
 	div.imagePanel
+		div.closeButton
+			i.fa.fa-times.fa-2x
+
 		div.backButton.button
+			i.fa.fa-chevron-left.fa-4x
 		div.nextButton.button
+			i.fa.fa-chevron-right.fa-4x
 
 		div.bottomContainer
 			div.toggleCaption
-				p info
+				i.fa.fa-plus
+
 
 		figcaption
 			p#caption We were blown away by the amount of uses our Mockuuups. We found a lot of shots with Mockuuups on Dribbble and we really appreciate it!
