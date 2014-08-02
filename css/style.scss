@@ -1,6 +1,18 @@
+// --------------------------------------------------------
+// IMPORTS
+// --------------------------------------------------------
+
 @import 'boiler';
 
+// --------------------------------------------------------
+// COLOURS
+// --------------------------------------------------------
+
 $darkgrey: #669999;
+
+// --------------------------------------------------------
+// MIXINS
+// --------------------------------------------------------
 
 @mixin fontify ($fz, $fw, $lh:1.5em, $td:none) {
 	font-family: 'Raleway','helvetica',sans-serif;
@@ -15,7 +27,8 @@ $darkgrey: #669999;
 	float:left;
 	position:relative;
 	cursor: pointer;
-	-webkit-transition: all 0.7s ease-in-out;
+	background-position:center;
+	// -webkit-transition: all 0.7s ease-in-out;
 	&:before{
 		content:'';
 		display:block;
@@ -24,8 +37,19 @@ $darkgrey: #669999;
 }
 
 @mixin hideMe {
-	// display: none;
+	display: none;
+	opacity: 0; 
+	transition-delay: 3s;
 }
+
+@mixin divPosition ($pos, $width, $height, $zi) {
+	position: $pos;
+	width: $width;
+	height: $height;	
+	z-index: $zi;
+}
+
+// --------------------------------------------------------
 
 body,
 html {
@@ -60,52 +84,52 @@ header {
 // }
 
 .image1 {
-	@include image;
 	background: url(../images/img1.jpg);
+	@include image;
 }
 .image2 {
-	@include image;
 	background: url(../images/img2.jpg);
+	@include image;
 }
 .image3 {
-	@include image;
 	background: url(../images/img3.jpg);
+	@include image;
 }
 .image4 {
-	@include image;
 	background: url(../images/img4.jpg);
+	@include image;
 }
 .image5 {
-	@include image;
 	background: url(../images/img5.jpg);
+	@include image;
 }
 .image6 {
-	@include image;
 	background: url(../images/img6.jpg);
+	@include image;
 }
 .image7 {
-	@include image;
 	background: url(../images/img7.jpg);
+	@include image;
 }
 .image8 {
-	@include image;
 	background: url(../images/img8.jpg);
+	@include image;
 }
 .image9 {
-	@include image;
 	background: url(../images/img9.jpg);
+	@include image;
 }
 .image10 {
-	@include image;
 	background: url(../images/img10.jpg);
+	@include image;
 }
 .image11 {
-	@include image;
 	background: url(../images/img11.jpg);
+	@include image;
 }
 .image12 {
-	@include image;
 	background: url(../images/img12.jpg);
+	@include image;
 }
 
 
@@ -114,24 +138,41 @@ header {
 //image panel
 
 .imagePanel {
-	display:none;
-	background: url('images/img1.jpg');
-	background-size: cover;
-	width:100%;
-	z-index: 99;
-	position: fixed;
+	@include divPosition(fixed,100%,null,99);
 	top:0;
 	left:0;
+	display:none;
+	background: url('images/img1.jpg') center;
+	background-size: cover;
+	// width:100%;
+	// z-index: 99;
+	// position: fixed;
+	transition: all 1s ease-in-out;
+}
+
+.imagePanel.full {
+	width: 100% !important;
+	height: 100% !important;
+	top:0 !important;
+	left:0 !important; 
 }
 
 .button {
 	@include hideMe;
-	width: 30%;
-	height: 400px;
+	@include divPosition (absolute,30%,400px,200);
 	cursor: pointer;
 	background-color: green;
-	position: absolute;
-	z-index: 200;
+	// width: 30%;
+	// height: 400px;
+	// position: absolute;
+	// z-index: 200;
+}
+
+.button.delay {
+	display:block !important;
+	opacity:1 !important;
+	transition:opacity 2s ease-in-out;
+	// transition-delay: 3s;
 }
 
 i {
@@ -141,14 +182,15 @@ i {
 
 .closeButton {
 	@include hideMe;
-	position: absolute;
+	@include divPosition(absolute,50px,50px,20);
 	top: 20px;
 	right: 0;
-	width: 50px;
-	height: 50px;
 	cursor: pointer;
+	// position: absolute;
+	// width: 50px;
+	// height: 50px;
 	// background-color: green;
-	z-index: 20;
+	// z-index: 20;
 }
 
 .backButton {
@@ -163,36 +205,39 @@ i {
 
 .bottomContainer {
 	@include hideMe;
-	width: 100%;
-	height: 50px;
-	margin:0 auto;
-	bottom: 0;
+	@include divPosition(absolute,100%,50px,20);
 	left: 0;
-	position: absolute;
+	bottom: 0;
+	margin:0 auto;
 	background-color:red;
 	text-align: center;
+	// width: 100%;
+	// height: 50px;
+	// position: absolute;
 }
 
 .toggleCaption {
-	// position: absolute;
-	// bottom: 5%;
+	@include divPosition(null,50px,50px,null);
 	margin: 0 auto;
-	width: 50px;
-	height: 50px;
 	cursor: pointer;
 	background-color: yellow;
 	border-radius: 100%;
+	// position: absolute;
+	// bottom: 5%;
+	// width: 50px;
+	// height: 50px;
 }
 
 
 figcaption {
 	//jQuery will reveal this on click of more info button
 	@include fontify(16px,400);
-	width: 300px;
-	position: absolute;
+	@include divPosition(absolute,300px,null,300);
 	bottom: 5%;
 	right: 10%;
-	z-index: 300;
+	// width: 300px;
+	// position: absolute;
+	// z-index: 300;
 	#caption {
 		display:none;
 	}

@@ -42,7 +42,6 @@ $(function(){
 		var position = $(this).position();
 		var imageOffsetTop = $(this).offset().top;
 		var scrollTop = $(window).scrollTop();
-		// var offsetPosition = $(this).offset();
 		var imageWidth = $(this).width();
 		var imageHeight = $(this).height();
 		var imageTop = imageOffsetTop - scrollTop;
@@ -58,17 +57,34 @@ $(function(){
 
 		//3. show imagePanel
 		$imagePanel.fadeIn('slow');
-		// $button.css({
-		// 	transition: opacity 2s ease-in;
-		// 	transition-delay: 2s;
-		// });
+
 		//4. expand imagePanel to the full screen
+		$(this).delay(10).queue(function(){
+		        $imagePanel.addClass('full');
+		        $(this).dequeue();
+		      });
+
+		//fade in buttons
+		$button.fadeIn().addClass('delay');
+
+		// $button.delay(10).queue(function(){
+		// 	$(this).css({
+		// 		display: 'block',
+		// 		transition: 'opacity 2s ease-in',
+		// 		'-webkit-transition-delay': '3s',
+		// 		opacity: '1'
+		// 	});
+		//         $(this).dequeue();
+		//       });
+		
+		//5. when closing, it needs match the top and left
+
+		//5.5 if closing img is diff from open img 
 
 
 
 
 
-		// $('article').hide();
 
 	});
 
@@ -78,8 +94,21 @@ $(function(){
 	});
 
 	$close.on('click', function(){
-		// $('article').show();
+
+		$imagePanel.delay(10).queue(function(){
+		        $imagePanel.removeClass('full');
+				// $imagePanel.fadeOut('slow');
+		        $(this).dequeue();
+		      });
+		$button.fadeOut().removeClass('delay');
 		$imagePanel.fadeOut('slow'); 
+
+
+
+		//image needs to disappear somehow in a fadeOut way
+
+
+
 	});
 
 	//click on back button goes to the prev img
