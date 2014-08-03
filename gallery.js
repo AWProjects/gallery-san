@@ -15,8 +15,9 @@ $(function(){
 	var $close = $('.closeButton');
 	var $currentImage;
 
-	var $firstImageButtons = $('.closeButton,.nextButton');
-	var $lastImageButtons = $('.closeButton,.backButton');
+	var $firstImageButtons = $('.closeButton,.nextButton,.bottomContainer');
+	var $lastImageButtons = $('.closeButton,.backButton,.bottomContainer');
+	var $allButtons = $('.closeButton,.nextButton,.backButton.bottomContainer');
 
 
 	//
@@ -66,22 +67,17 @@ $(function(){
 		        $(this).dequeue();
 		      });
 
-		//fade in buttons
+		//fade in buttons for image clicked
 		if($currentImage.hasClass('image1')) {
 			$firstImageButtons.fadeIn().addClass('delay');	
 		}
-		else if($image.is(':last-child')){
+		else if($currentImage.is(':last-child')){
 			$lastImageButtons.fadeIn().addClass('delay');
 		}
 		else {
 			$button.fadeIn().addClass('delay');
 		};
-		// $button.fadeIn().addClass('delay');
-		
-		//5. when closing, it needs match the top and left
-
-
-		//5.5 if closing img is diff from open img 
+	
 
 
 	}); //END OF $IMAGE CLICK 
@@ -110,7 +106,7 @@ $(function(){
 		        $(this).dequeue();
 		      });
 		$button.fadeOut().removeClass('delay');
-		// $imagePanel.fadeOut('slow'); 
+		$imagePanel.fadeOut('slow'); 
 
 		//image needs to disappear somehow in a fadeOut way
 
@@ -126,15 +122,28 @@ $(function(){
 		$currentImage = $currentImage.prev();
 		changeBackgroundImage();
 
-		$button.show();
-
-		if ($currentImage.hasClass('image1')){
-			$back.hide();
-		} else {
-			$next.show();
+		if($currentImage.hasClass('image1')) {
+			$back.hide().removeClass('delay');
+			$firstImageButtons.fadeIn().addClass('delay');			
+		}
+		else if($currentImage.is(':last-child')){
+			$next.hide().removeClass('delay');
+			$lastImageButtons.fadeIn().addClass('delay');
+		}
+		else {
+			$button.fadeIn().addClass('delay');
 		};
 
+
+		// if ($currentImage.hasClass('image1')){
+		// 	$back.hide();
+		// } else {
+		// 	$next.show();
+		// };
+
 	});
+
+
 
 //----------------------------------------------------------------
 //NEXT BUTTON
@@ -146,12 +155,25 @@ $(function(){
 		$currentImage = $currentImage.next();
 		changeBackgroundImage();
 
-		$button.show();
-
-		if ($currentImage.is(':last-child')){
-			$next.hide();
-		} else {
-			$back.show();
+		
+		if($currentImage.hasClass('image1')) {
+			$back.hide().removeClass('delay');
+			$firstImageButtons.fadeIn().addClass('delay');
+		}
+		else if($currentImage.is(':last-child')){
+			$next.hide().removeClass('delay');
+			$lastImageButtons.fadeIn().addClass('delay');
+		}
+		else {
+			$button.fadeIn().addClass('delay');
 		};
+
+
+
+		// if ($currentImage.is(':last-child')){
+		// 	$next.hide();
+		// } else {
+		// 	$back.show();
+		// };
 	});
 });
