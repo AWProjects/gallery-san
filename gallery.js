@@ -15,6 +15,9 @@ $(function(){
 	var $close = $('.closeButton');
 	var $currentImage;
 
+	var $firstImageButtons = $('.closeButton,.nextButton');
+	var $lastImageButtons = $('.closeButton,.backButton');
+
 
 	//
 	var changeBackgroundImage = function() {
@@ -28,32 +31,31 @@ $(function(){
 
 	};
 
-	$image.on('click', function(){
-		$currentImage = $(this);
-		//set the background image to corresponding image clicked
-
-		changeBackgroundImage();
-		//imagePanel appears when image clicked
-
-		//Show Buttons with delay
-
-
-		//1. get the position of the grid image
-		var position = $(this).position();
-		var imageOffsetTop = $(this).offset().top;
+	var assignImagePosition = function(findForThis) {
+		var position = findForThis.position();
+		var imageOffsetTop = findForThis.offset().top;
 		var scrollTop = $(window).scrollTop();
-		var imageWidth = $(this).width();
-		var imageHeight = $(this).height();
+		var imageWidth = findForThis.width();
+		var imageHeight = findForThis.height();
 		var imageTop = imageOffsetTop - scrollTop;
 
-
-		//2. transfer it to imagePanel
 		$imagePanel.css({
 			top: imageTop,
 			left: position.left,
 			width: imageWidth,
 			height: imageHeight
 		});
+	};
+
+
+	//WHEN AN IMAGE IN THE GRID IS CLICKED
+	$image.on('click', function(){
+		$currentImage = $(this);
+		
+		//set the background image to corresponding image clicked
+		changeBackgroundImage();
+
+		assignImagePosition($currentImage);
 
 		//3. show imagePanel
 		$imagePanel.fadeIn('slow');
@@ -65,25 +67,42 @@ $(function(){
 		      });
 
 		//fade in buttons
-		$button.fadeIn().addClass('delay');
+		if($currentImage.hasClass('image1')) {
+			$firstImageButtons.fadeIn().addClass('delay');	
+		}
+		else if($image.is(':last-child')){
+			$lastImageButtons.fadeIn().addClass('delay');
+		}
+		else {
+			$button.fadeIn().addClass('delay');
+		};
+		// $button.fadeIn().addClass('delay');
 		
 		//5. when closing, it needs match the top and left
+
 
 		//5.5 if closing img is diff from open img 
 
 
+	}); //END OF $IMAGE CLICK 
 
 
+//----------------------------------------------------------------
+//TOGGLE CAPTION
+//----------------------------------------------------------------
 
-
-	});
-
-
+	//TOGGLE CAPTION INFO
 	$toggleCaption.on('click', function(){
 		$caption.toggle('slow');
 	});
 
+//----------------------------------------------------------------
+//CLOSE FULLSIZE IMAGE
+//----------------------------------------------------------------
+
 	$close.on('click', function(){
+
+		assignImagePosition($currentImage);
 
 		$imagePanel.delay(10).queue(function(){
 		        $imagePanel.removeClass('full');
@@ -91,33 +110,44 @@ $(function(){
 		        $(this).dequeue();
 		      });
 		$button.fadeOut().removeClass('delay');
-		$imagePanel.fadeOut('slow'); 
-
-
+		// $imagePanel.fadeOut('slow'); 
 
 		//image needs to disappear somehow in a fadeOut way
 
-
-
 	});
+
+//----------------------------------------------------------------
+//BACK BUTTON
+//----------------------------------------------------------------
 
 	//click on back button goes to the prev img
 	//back button doesn't show on img1
 	$back.on('click',function(){
 		$currentImage = $currentImage.prev();
 		changeBackgroundImage();
+
+		$button.show();
+
 		if ($currentImage.hasClass('image1')){
 			$back.hide();
 		} else {
 			$next.show();
 		};
+
 	});
+
+//----------------------------------------------------------------
+//NEXT BUTTON
+//----------------------------------------------------------------
 
 	//click on next button goes to the next img
 	//next button doesn't show on image:last-child
 	$next.on('click',function(){
 		$currentImage = $currentImage.next();
 		changeBackgroundImage();
+
+		$button.show();
+
 		if ($currentImage.is(':last-child')){
 			$next.hide();
 		} else {

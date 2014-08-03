@@ -312,7 +312,7 @@ header {
   height: 400px;
   z-index: 200;
   cursor: pointer;
-  background-color: green; }
+  color: white; }
 
 .button.delay {
   display: block !important;
