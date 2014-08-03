@@ -130,9 +130,6 @@ header {
 	display:none;
 	background: url('images/img1.jpg') center;
 	background-size: cover;
-	// width:100%;
-	// z-index: 99;
-	// position: fixed;
 	transition: all 1s ease-in-out;
 }
 
@@ -145,9 +142,9 @@ header {
 
 .button {
 	@include hideMe;
-	@include divPosition (absolute,30%,400px,200);
+	@include divPosition (absolute,15%,400px,200);
 	cursor: pointer;
-	// background-color: green;
+	background-color: green;
 	color: white;
 }
 
@@ -157,27 +154,43 @@ header {
 	transition:opacity 2s ease-in-out;
 }
 
-i {
-	position: absolute;
-	top:40%;
+.fa {
+	// position: absolute;
+	text-shadow: 0px 0px 5px rgba(0,0,0,0.3);
 }
 
 .closeButton {
 	@include hideMe;
-	@include divPosition(absolute,50px,50px,20);
+	@include divPosition(null,75px,75px,20);
 	top: 20px;
 	right: 0;
 	cursor: pointer;
+	text-align: center;
+	.fa {
+		position: relative;
+		top: calc(50% - 16px);
+	}
 }
 
 .backButton {
 	top:30%;
-	left:0;	
+	left:0;
+	text-align: center;
+	padding-top: 10%;
+	.fa {
+		padding-right: 20%;
+	}
+
 }
 
 .nextButton {
 	top:30%;
-	right:0;	
+	right:0;
+	text-align: center;
+	padding-top: 10%;
+	.fa {
+		padding-left: 20%;
+	}
 }
 
 .bottomContainer {
@@ -186,7 +199,6 @@ i {
 	left: 0;
 	bottom: 0;
 	margin:0 auto;
-	background-color:red;
 	text-align: center;
 }
 
@@ -196,16 +208,22 @@ i {
 	cursor: pointer;
 	background-color: yellow;
 	border-radius: 100%;
+	.fa {
+		position: absolute;
+
+	}
 }
 
 figcaption {
 	//jQuery will reveal this on click of more info button
 	@include fontify(16px,400);
-	@include divPosition(absolute,300px,null,300);
+	@include divPosition(absolute,100%,null,300);
 	bottom: 5%;
-	right: 10%;
-	#caption {
-		display:none;
-	}
+	background-color: green;
+	// right: 10%;
+		#caption {
+			display:none;
+			padding: 0 25%;
+		}
 }
 

@@ -17,7 +17,6 @@ $(function(){
 
 	var $firstImageButtons = $('.closeButton,.nextButton,.bottomContainer');
 	var $lastImageButtons = $('.closeButton,.backButton,.bottomContainer');
-	var $allButtons = $('.closeButton,.nextButton,.backButton.bottomContainer');
 
 
 	//
@@ -89,7 +88,7 @@ $(function(){
 
 	//TOGGLE CAPTION INFO
 	$toggleCaption.on('click', function(){
-		$caption.toggle('slow');
+		$caption.slideToggle('jsswing');
 	});
 
 //----------------------------------------------------------------
@@ -107,8 +106,6 @@ $(function(){
 		      });
 		$button.fadeOut().removeClass('delay');
 		$imagePanel.fadeOut('slow'); 
-
-		//image needs to disappear somehow in a fadeOut way
 
 	});
 
@@ -133,13 +130,6 @@ $(function(){
 		else {
 			$button.fadeIn().addClass('delay');
 		};
-
-
-		// if ($currentImage.hasClass('image1')){
-		// 	$back.hide();
-		// } else {
-		// 	$next.show();
-		// };
 
 	});
 
@@ -168,12 +158,5 @@ $(function(){
 			$button.fadeIn().addClass('delay');
 		};
 
-
-
-		// if ($currentImage.is(':last-child')){
-		// 	$next.hide();
-		// } else {
-		// 	$back.show();
-		// };
 	});
 });

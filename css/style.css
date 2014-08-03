@@ -308,10 +308,11 @@ header {
   -webkit-transition-delay: 3s;
           transition-delay: 3s;
   position: absolute;
-  width: 30%;
+  width: 15%;
   height: 400px;
   z-index: 200;
   cursor: pointer;
+  background-color: green;
   color: white; }
 
 .button.delay {
@@ -320,30 +321,41 @@ header {
   -webkit-transition: opacity 2s ease-in-out;
           transition: opacity 2s ease-in-out; }
 
-i {
-  position: absolute;
-  top: 40%; }
+.fa {
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); }
 
 .closeButton {
   display: none;
   opacity: 0;
   -webkit-transition-delay: 3s;
           transition-delay: 3s;
-  position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 75px;
+  height: 75px;
   z-index: 20;
   top: 20px;
   right: 0;
-  cursor: pointer; }
+  cursor: pointer;
+  text-align: center; }
+  .closeButton .fa {
+    position: relative;
+    top: -webkit-calc(50% - 16px);
+    top: calc(50% - 16px); }
 
 .backButton {
   top: 30%;
-  left: 0; }
+  left: 0;
+  text-align: center;
+  padding-top: 10%; }
+  .backButton .fa {
+    padding-right: 20%; }
 
 .nextButton {
   top: 30%;
-  right: 0; }
+  right: 0;
+  text-align: center;
+  padding-top: 10%; }
+  .nextButton .fa {
+    padding-left: 20%; }
 
 .bottomContainer {
   display: none;
@@ -357,7 +369,6 @@ i {
   left: 0;
   bottom: 0;
   margin: 0 auto;
-  background-color: red;
   text-align: center; }
 
 .toggleCaption {
@@ -367,6 +378,8 @@ i {
   cursor: pointer;
   background-color: yellow;
   border-radius: 100%; }
+  .toggleCaption .fa {
+    position: absolute; }
 
 figcaption {
   font-family: 'Raleway','helvetica',sans-serif;
@@ -375,9 +388,10 @@ figcaption {
   line-height: 1.5em;
   text-decoration: none;
   position: absolute;
-  width: 300px;
+  width: 100%;
   z-index: 300;
   bottom: 5%;
-  right: 10%; }
+  background-color: green; }
   figcaption #caption {
-    display: none; }
+    display: none;
+    padding: 0 25%; }
