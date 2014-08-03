@@ -68,21 +68,6 @@ header {
 	}
 }
 
-
-
-
-
-// figcaption {
-// 	background:white;
-// 	position:absolute;
-// 	bottom:0;
-// 	width: 100%;
-// 	height: 100%;
-// 	text-align: center;
-// 	display:block;
-// 	opacity:0.8;
-// }
-
 .image1 {
 	background: url(../images/img1.jpg);
 	@include image;
@@ -134,8 +119,9 @@ header {
 
 
 
-
-//image panel
+//----------------------------------------------------------------
+//IMAGE PANEL
+//----------------------------------------------------------------
 
 .imagePanel {
 	@include divPosition(fixed,100%,null,99);

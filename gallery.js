@@ -66,16 +66,6 @@ $(function(){
 
 		//fade in buttons
 		$button.fadeIn().addClass('delay');
-
-		// $button.delay(10).queue(function(){
-		// 	$(this).css({
-		// 		display: 'block',
-		// 		transition: 'opacity 2s ease-in',
-		// 		'-webkit-transition-delay': '3s',
-		// 		opacity: '1'
-		// 	});
-		//         $(this).dequeue();
-		//       });
 		
 		//5. when closing, it needs match the top and left
 
