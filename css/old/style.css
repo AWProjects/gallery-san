@@ -1,0 +1,413 @@
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
+  display: block;
+}
+
+audio, canvas, video {
+  display: inline-block;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+[hidden] {
+  display: none;
+}
+
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+a:focus {
+  outline: thin dotted;
+}
+
+a:active, a:hover {
+  outline: 0;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+b, strong {
+  font-weight: 700;
+}
+
+dfn {
+  font-style: italic;
+}
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+code, kbd, pre, samp {
+  font-family: monospace, serif;
+  font-size: 1em;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+q {
+  quotes: \201C \201D \2018 \2019;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -.5em;
+}
+
+sub {
+  bottom: -.25em;
+}
+
+img {
+  border: 0;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+fieldset {
+  border: 1px solid silver;
+  margin: 0 2px;
+  padding: .35em .625em .75em;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0;
+}
+
+button, input {
+  line-height: normal;
+}
+
+button, html input[type=button],
+input[type=reset], input[type=submit] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+button[disabled], input[disabled] {
+  cursor: default;
+}
+
+input[type=checkbox], input[type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+input[type=search] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+textarea {
+  overflow: auto;
+  vertical-align: top;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body, figure {
+  margin: 0;
+}
+
+legend, button::-moz-focus-inner, input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.clearfix:after {
+  content: " ";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+header {
+  text-align: center;
+  padding: 40px 0;
+  font-weight: 900;
+}
+header h1 {
+  font-size: 48px;
+  color: #669999;
+}
+
+.image1 {
+  width: 33.33%;
+  float: left;
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: all 0.7s ease-in-out;
+  background: url(images/img1.jpg);
+}
+.image1:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.image2 {
+  width: 33.33%;
+  float: left;
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: all 0.7s ease-in-out;
+  background: url(images/img2.jpg);
+}
+.image2:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.image3 {
+  width: 33.33%;
+  float: left;
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: all 0.7s ease-in-out;
+  background: url(images/img3.jpg);
+}
+.image3:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.image4 {
+  width: 33.33%;
+  float: left;
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: all 0.7s ease-in-out;
+  background: url(images/img4.jpg);
+}
+.image4:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.image5 {
+  width: 33.33%;
+  float: left;
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: all 0.7s ease-in-out;
+  background: url(images/img5.jpg);
+}
+.image5:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.image6 {
+  width: 33.33%;
+  float: left;
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: all 0.7s ease-in-out;
+  background: url(images/img6.jpg);
+}
+.image6:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.image7 {
+  width: 33.33%;
+  float: left;
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: all 0.7s ease-in-out;
+  background: url(images/img7.jpg);
+}
+.image7:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.image8 {
+  width: 33.33%;
+  float: left;
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: all 0.7s ease-in-out;
+  background: url(images/img8.jpg);
+}
+.image8:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.image9 {
+  width: 33.33%;
+  float: left;
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: all 0.7s ease-in-out;
+  background: url(images/img9.jpg);
+}
+.image9:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.image10 {
+  width: 33.33%;
+  float: left;
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: all 0.7s ease-in-out;
+  background: url(images/img10.jpg);
+}
+.image10:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.image11 {
+  width: 33.33%;
+  float: left;
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: all 0.7s ease-in-out;
+  background: url(images/img11.jpg);
+}
+.image11:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.image12 {
+  width: 33.33%;
+  float: left;
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: all 0.7s ease-in-out;
+  background: url(images/img12.jpg);
+}
+.image12:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.imagePanel {
+  display: none;
+  background: url("images/img1.jpg");
+  background-size: cover;
+  width: 100%;
+  min-height: 100%;
+  z-index: 10;
+  position: relative;
+}
+
+.button {
+  width: 30%;
+  height: 400px;
+  cursor: pointer;
+  background-color: green;
+  position: absolute;
+  z-index: 20;
+}
+
+.backButton {
+  top: 30%;
+  left: 0;
+}
+
+.nextButton {
+  top: 30%;
+  right: 0;
+}
+
+.bottomContainer {
+  width: 100%;
+  height: 50px;
+  margin: 0 auto;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  background-color: red;
+  text-align: center;
+}
+
+.toggleCaption {
+  margin: 0 auto;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  background-color: yellow;
+  border-radius: 100%;
+}
+
+figcaption {
+  font-family: 'Raleway','helvetica',sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5em;
+  text-decoration: none;
+  width: 300px;
+  position: absolute;
+  bottom: 5%;
+  right: 10%;
+  z-index: 30;
+}

@@ -1,0 +1,175 @@
+@import 'boiler';
+
+$darkgrey: #669999;
+
+@mixin fontify ($fz, $fw, $lh:1.5em, $td:none) {
+	font-family: 'Raleway','helvetica',sans-serif;
+	font-size: $fz;
+	font-weight: $fw;
+	line-height: $lh;
+	text-decoration: $td;
+}
+
+@mixin image{
+	width: 33.33%;
+	float:left;
+	position:relative;
+	cursor: pointer;
+	-webkit-transition: all 0.7s ease-in-out;
+	&:before{
+		content:'';
+		display:block;
+		padding-top: 100%;
+	}
+}
+
+body,
+html {
+	height: 100%;
+	margin: 0;
+}
+
+
+header {
+	text-align: center;
+	padding: 40px 0;
+	font-weight: 900;
+	h1 {
+		font-size: 48px;
+		color:$darkgrey;
+	}
+}
+
+
+
+
+
+// figcaption {
+// 	background:white;
+// 	position:absolute;
+// 	bottom:0;
+// 	width: 100%;
+// 	height: 100%;
+// 	text-align: center;
+// 	display:block;
+// 	opacity:0.8;
+// }
+
+.image1 {
+	@include image;
+	background: url(images/img1.jpg);
+}
+.image2 {
+	@include image;
+	background: url(images/img2.jpg);
+}
+.image3 {
+	@include image;
+	background: url(images/img3.jpg);
+}
+.image4 {
+	@include image;
+	background: url(images/img4.jpg);
+}
+.image5 {
+	@include image;
+	background: url(images/img5.jpg);
+}
+.image6 {
+	@include image;
+	background: url(images/img6.jpg);
+}
+.image7 {
+	@include image;
+	background: url(images/img7.jpg);
+}
+.image8 {
+	@include image;
+	background: url(images/img8.jpg);
+}
+.image9 {
+	@include image;
+	background: url(images/img9.jpg);
+}
+.image10 {
+	@include image;
+	background: url(images/img10.jpg);
+}
+.image11 {
+	@include image;
+	background: url(images/img11.jpg);
+}
+.image12 {
+	@include image;
+	background: url(images/img12.jpg);
+}
+
+
+
+
+//image panel
+
+.imagePanel {
+	display:none;
+	background: url('images/img1.jpg');
+	background-size: cover;
+	width:100%;
+	min-height: 100%;
+	z-index: 10;
+	position: relative;
+}
+
+.button {
+	width: 30%;
+	height: 400px;
+	cursor: pointer;
+	background-color: green;
+	position: absolute;
+	z-index: 20;
+}
+
+.backButton {
+	top:30%;
+	left:0;	
+}
+
+.nextButton {
+	top:30%;
+	right:0;	
+}
+
+.bottomContainer {
+	width: 100%;
+	height: 50px;
+	margin:0 auto;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	background-color:red;
+	text-align: center;
+}
+
+.toggleCaption {
+	// position: absolute;
+	// bottom: 5%;
+	margin: 0 auto;
+	width: 50px;
+	height: 50px;
+	cursor: pointer;
+	background-color: yellow;
+	border-radius: 100%;
+}
+
+
+figcaption {
+	//jQuery will reveal this on click of more info button
+	// display:none;
+	@include fontify(16px,400);
+	width: 300px;
+	position: absolute;
+	bottom: 5%;
+	right: 10%;
+	z-index: 30;
+
+}
+

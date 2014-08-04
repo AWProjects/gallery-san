@@ -312,7 +312,6 @@ header {
   height: 400px;
   z-index: 200;
   cursor: pointer;
-  background-color: green;
   color: white; }
 
 .button.delay {
@@ -364,12 +363,12 @@ header {
           transition-delay: 3s;
   position: absolute;
   width: 100%;
-  height: 50px;
+  height: 70px;
   z-index: 20;
   left: 0;
   bottom: 0;
   margin: 0 auto;
-  text-align: center; }
+  padding: 10px 0; }
 
 .toggleCaption {
   width: 50px;
@@ -379,7 +378,11 @@ header {
   background-color: yellow;
   border-radius: 100%; }
   .toggleCaption .fa {
-    position: absolute; }
+    position: relative;
+    top: -webkit-calc(50% - 8px);
+    top: calc(50% - 8px);
+    left: -webkit-calc(50% - 6px);
+    left: calc(50% - 6px); }
 
 figcaption {
   font-family: 'Raleway','helvetica',sans-serif;
@@ -390,8 +393,9 @@ figcaption {
   position: absolute;
   width: 100%;
   z-index: 300;
-  bottom: 5%;
-  background-color: green; }
+  bottom: 70px;
+  background-color: #222; }
   figcaption #caption {
+    color: white;
     display: none;
-    padding: 0 25%; }
+    padding: 0 30%; }
