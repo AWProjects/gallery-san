@@ -129,7 +129,7 @@ $(function(){
 		        $imagePanel.removeClass('full');
 		        $(this).dequeue();
 		      });
-		$button.fadeTo('fast',0);
+		// $button.fadeTo('fast',0);
 		$button.fadeOut().removeClass('delay');
 		$imagePanel.fadeOut(900); 
 

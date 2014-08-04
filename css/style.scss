@@ -8,7 +8,7 @@
 // COLOURS
 // --------------------------------------------------------
 
-$darkgrey: #669999;
+$darkgrey: #222;
 
 // --------------------------------------------------------
 // MIXINS
@@ -28,6 +28,7 @@ $darkgrey: #669999;
 	position:relative;
 	cursor: pointer;
 	background-position:center;
+	background-size: cover;
 	// -webkit-transition: all 0.7s ease-in-out;
 	&:before{
 		content:'';
@@ -236,7 +237,7 @@ figcaption {
 			display:none;
 			padding: 2% 5%;
 			#captionTitle {
-				@include fontify(16px, 600);
+				@include fontify(18px, 600);
 				color:white;
 				margin-bottom: 5px;
 			}
