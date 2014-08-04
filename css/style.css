@@ -311,7 +311,6 @@ header {
   width: 15%;
   height: 400px;
   z-index: 200;
-  cursor: pointer;
   color: white; }
 
 .button.delay {
@@ -344,6 +343,7 @@ header {
   top: 30%;
   left: 0;
   text-align: center;
+  cursor: pointer;
   padding-top: 10%; }
   .backButton .fa {
     padding-right: 20%; }
@@ -352,6 +352,7 @@ header {
   top: 30%;
   right: 0;
   text-align: center;
+  cursor: pointer;
   padding-top: 10%; }
   .nextButton .fa {
     padding-left: 20%; }

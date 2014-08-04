@@ -1,10 +1,7 @@
+
 $(function(){
-	// $('article div').on('click', function(){
-	// 	$('.imagePanel').css('display','block');
-	// });
-	// $('.imagePanel').on('click', function(){
-	// 	$(this).css('display','none');
-	// });
+
+	//define variables
 	var $imagePanel = $('.imagePanel');
 	var $image = $('article div');
 	var $caption = $('#caption');
@@ -13,13 +10,14 @@ $(function(){
 	var $back = $('.backButton');
 	var $next = $('.nextButton');
 	var $close = $('.closeButton');
+	var $delay = $('.delay');
 	var $currentImage;
 
 	var $firstImageButtons = $('.closeButton,.nextButton,.bottomContainer');
 	var $lastImageButtons = $('.closeButton,.backButton,.bottomContainer');
 
 
-	//
+	//function to change the background image
 	var changeBackgroundImage = function() {
 		var backgroundImage = $currentImage.css('background-image');
 		$imagePanel.css('background-image',backgroundImage);
@@ -31,6 +29,7 @@ $(function(){
 
 	};
 
+	//function to find position of the grid version of the image (when you close the fullsize version it needs to minimize back into the correct position in the grid)
 	var assignImagePosition = function(findForThis) {
 		var position = findForThis.position();
 		var imageOffsetTop = findForThis.offset().top;
@@ -68,13 +67,17 @@ $(function(){
 
 		//fade in buttons for image clicked
 		if($currentImage.hasClass('image1')) {
-			$firstImageButtons.fadeIn().addClass('delay');	
+			$firstImageButtons.fadeIn().addClass('delay');
+			$delay.css('transition','opacity 0.1s ease-in-out');
+
 		}
 		else if($currentImage.is(':last-child')){
 			$lastImageButtons.fadeIn().addClass('delay');
+			$delay.css('transition','opacity 0.1s ease-in-out');
 		}
 		else {
 			$button.fadeIn().addClass('delay');
+			$delay.css('transition','opacity 0.1s ease-in-out');
 		};
 	
 
@@ -99,13 +102,14 @@ $(function(){
 
 		assignImagePosition($currentImage);
 
+		// $button.removeClass('delay');
+
 		$imagePanel.delay(10).queue(function(){
 		        $imagePanel.removeClass('full');
-				// $imagePanel.fadeOut('slow');
 		        $(this).dequeue();
 		      });
 		$button.fadeOut().removeClass('delay');
-		$imagePanel.fadeOut('slow'); 
+		$imagePanel.fadeOut(900); 
 
 	});
 

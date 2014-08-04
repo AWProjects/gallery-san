@@ -68,6 +68,10 @@ header {
 	}
 }
 
+//----------------------------------------------------------------
+//BACKGROUND IMAGES 
+//----------------------------------------------------------------
+
 .image1 {
 	background: url(../images/img1.jpg);
 	@include image;
@@ -143,10 +147,10 @@ header {
 .button {
 	@include hideMe;
 	@include divPosition (absolute,15%,400px,200);
-	cursor: pointer;
 	// background-color: green;
 	color: white;
 }
+
 
 .button.delay {
 	display:block !important;
@@ -176,6 +180,7 @@ header {
 	top:30%;
 	left:0;
 	text-align: center;
+	cursor: pointer;
 	padding-top: 10%;
 	.fa {
 		padding-right: 20%;
@@ -187,6 +192,7 @@ header {
 	top:30%;
 	right:0;
 	text-align: center;
+	cursor: pointer;
 	padding-top: 10%;
 	.fa {
 		padding-left: 20%;
@@ -206,7 +212,6 @@ header {
 .toggleCaption {
 	@include divPosition(null,50px,50px,null);
 	margin: 0 auto;
-
 	cursor: pointer;
 	background-color: yellow;
 	border-radius: 100%;
