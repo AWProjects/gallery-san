@@ -364,39 +364,56 @@ header {
           transition-delay: 3s;
   position: absolute;
   width: 100%;
-  height: 70px;
+  height: 120px;
   z-index: 20;
   left: 0;
   bottom: 0;
   margin: 0 auto;
-  padding: 10px 0; }
+  padding-top: 10px; }
 
 .toggleCaption {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   margin: 0 auto;
   cursor: pointer;
-  background-color: yellow;
-  border-radius: 100%; }
+  background-color: #222;
+  border-radius: 100%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); }
   .toggleCaption .fa {
+    font-size: 24px;
     position: relative;
-    top: -webkit-calc(50% - 8px);
-    top: calc(50% - 8px);
-    left: -webkit-calc(50% - 6px);
-    left: calc(50% - 6px); }
+    top: -webkit-calc(50% - 12px);
+    top: calc(50% - 12px);
+    left: -webkit-calc(50% - 10px);
+    left: calc(50% - 10px); }
+
+.container {
+  width: 100%;
+  padding: 0 33.3%; }
 
 figcaption {
-  font-family: 'Raleway','helvetica',sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5em;
-  text-decoration: none;
   position: absolute;
-  width: 100%;
+  width: 33%;
   z-index: 300;
-  bottom: 70px;
+  bottom: 120px;
   background-color: #222; }
   figcaption #caption {
-    color: white;
     display: none;
-    padding: 0 30%; }
+    padding: 2% 5%; }
+    figcaption #caption #captionTitle {
+      font-family: 'Open Sans','helvetica',sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.5em;
+      text-decoration: none;
+      color: white;
+      margin-bottom: 5px; }
+    figcaption #caption #captionBody {
+      font-family: 'Open Sans','helvetica',sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.5em;
+      text-decoration: none;
+      color: white;
+      margin-top: 5px;
+      margin-bottom: 16px; }

@@ -5,6 +5,8 @@ $(function(){
 	var $imagePanel = $('.imagePanel');
 	var $image = $('article div');
 	var $caption = $('#caption');
+	var $captionTitle = $('#captionTitle');
+	var $captionBody = $('#captionBody');
 	var $toggleCaption = $('.toggleCaption');
 	var $button = $('.button');
 	var $back = $('.backButton');
@@ -24,10 +26,18 @@ $(function(){
 
 		//retrieve caption from data-caption and set it
 		//to #caption
-		var imageCap = $currentImage.data('caption');
-		$caption.text(imageCap).hide();
+		// var imageCapTitle = $currentImage.data('title');
 
 	};
+	var retrieveCaptionData = function(){
+		var imageCapTitle = $currentImage.data('title');
+		var imageCapBody = $currentImage.data('caption');
+		// $caption.text(imageCapTitle).hide();
+		$captionTitle.text(imageCapTitle);
+		$captionBody.text(imageCapBody);
+	};
+
+
 
 	//function to find position of the grid version of the image (when you close the fullsize version it needs to minimize back into the correct position in the grid)
 	var assignImagePosition = function(findForThis) {
@@ -47,12 +57,23 @@ $(function(){
 	};
 
 
+	//a function that hide captions if it's visible when a button is clicked
+	var hideCaption = function() {
+		if($caption.css('display') === 'block') {
+			$caption.slideToggle('easeInOut');
+		};
+	};
+
 	//WHEN AN IMAGE IN THE GRID IS CLICKED
 	$image.on('click', function(){
 		$currentImage = $(this);
+		// $('figcaption').fadeTo(500,1);
 		
 		//set the background image to corresponding image clicked
 		changeBackgroundImage();
+
+		retrieveCaptionData();
+
 
 		assignImagePosition($currentImage);
 
@@ -68,16 +89,16 @@ $(function(){
 		//fade in buttons for image clicked
 		if($currentImage.hasClass('image1')) {
 			$firstImageButtons.fadeIn().addClass('delay');
-			$delay.css('transition','opacity 0.1s ease-in-out');
+			// $delay.css('transition','opacity 0.1s ease-in-out');
 
 		}
 		else if($currentImage.is(':last-child')){
 			$lastImageButtons.fadeIn().addClass('delay');
-			$delay.css('transition','opacity 0.1s ease-in-out');
+			// $delay.css('transition','opacity 0.1s ease-in-out');
 		}
 		else {
 			$button.fadeIn().addClass('delay');
-			$delay.css('transition','opacity 0.1s ease-in-out');
+			// $delay.css('transition','opacity 0.1s ease-in-out');
 		};
 	
 
@@ -91,7 +112,7 @@ $(function(){
 
 	//TOGGLE CAPTION INFO
 	$toggleCaption.on('click', function(){
-		$caption.slideToggle('jsswing');
+		$caption.slideToggle('easeInOut');
 	});
 
 //----------------------------------------------------------------
@@ -102,12 +123,13 @@ $(function(){
 
 		assignImagePosition($currentImage);
 
-		// $button.removeClass('delay');
-
+		hideCaption();
+		// $('figcaption').fadeTo(500,0);
 		$imagePanel.delay(10).queue(function(){
 		        $imagePanel.removeClass('full');
 		        $(this).dequeue();
 		      });
+		$button.fadeTo('fast',0);
 		$button.fadeOut().removeClass('delay');
 		$imagePanel.fadeOut(900); 
 
@@ -121,7 +143,13 @@ $(function(){
 	//back button doesn't show on img1
 	$back.on('click',function(){
 		$currentImage = $currentImage.prev();
+		hideCaption();
 		changeBackgroundImage();
+		$(this).delay(500).queue(function(){
+			retrieveCaptionData();
+			$(this).dequeue();
+		});
+
 
 		if($currentImage.hasClass('image1')) {
 			$back.hide().removeClass('delay');
@@ -147,7 +175,12 @@ $(function(){
 	//next button doesn't show on image:last-child
 	$next.on('click',function(){
 		$currentImage = $currentImage.next();
-		changeBackgroundImage();
+			hideCaption();
+			changeBackgroundImage();
+		$(this).delay(500).queue(function(){
+			retrieveCaptionData();
+			$(this).dequeue();
+		});
 
 		
 		if($currentImage.hasClass('image1')) {
@@ -161,6 +194,7 @@ $(function(){
 		else {
 			$button.fadeIn().addClass('delay');
 		};
+
 
 	});
 });

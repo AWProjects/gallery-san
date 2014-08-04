@@ -15,7 +15,7 @@ $darkgrey: #669999;
 // --------------------------------------------------------
 
 @mixin fontify ($fz, $fw, $lh:1.5em, $td:none) {
-	font-family: 'Raleway','helvetica',sans-serif;
+	font-family: 'Open Sans','helvetica',sans-serif;
 	font-size: $fz;
 	font-weight: $fw;
 	line-height: $lh;
@@ -201,37 +201,53 @@ header {
 
 .bottomContainer {
 	@include hideMe;
-	@include divPosition(absolute,100%,70px,20);
+	@include divPosition(absolute,100%,120px,20);
 	left: 0;
 	bottom: 0;
 	margin:0 auto;
-	padding: 10px 0;
+	padding-top: 10px;
 	// text-align: center;
 }
 
 .toggleCaption {
-	@include divPosition(null,50px,50px,null);
+	@include divPosition(null,60px,60px,null);
 	margin: 0 auto;
 	cursor: pointer;
-	background-color: yellow;
+	background-color: #222;
 	border-radius: 100%;
+	box-shadow: 0 0 5px rgba(0,0,0,.5);
 	.fa {
+		font-size: 24px;
 		position: relative;
-		top: calc(50% - 8px);
-		left: calc(50% - 6px);
+		top: calc(50% - 12px);
+		left: calc(50% - 10px);
 	}
 }
-
+.container {
+	width: 100%;
+	padding: 0 33.3%;
+}
 figcaption {
 	//jQuery will reveal this on click of more info button
-	@include fontify(16px,400);
-	@include divPosition(absolute,100%,null,300);
-	bottom: 70px;
+	@include divPosition(absolute,33%,null,300);
+	bottom: 120px;
 	background-color: #222;
 		#caption {
-			color:white;
 			display:none;
-			padding: 0 30%;
+			padding: 2% 5%;
+			#captionTitle {
+				@include fontify(16px, 600);
+				color:white;
+				margin-bottom: 5px;
+			}
+			#captionBody {
+				// display:block;
+				@include fontify(14px, 300);
+				color:white;
+				margin-top: 5px;
+				margin-bottom: 16px;
+				
+			}
 		}
 }
 

@@ -4,9 +4,8 @@ head
 	meta(charset="UTF-8")
 	title Document
 	link(rel="stylesheet", href="css/style.css")
-	link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,800,900", type="text/css")
-	script(type='text/javascript', src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
-	script(type='text/javascript', src="gallery.js")
+	link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css')
+
 	link(href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet")
 body
 	div.imagePanel
@@ -22,25 +21,29 @@ body
 		div.bottomContainer.button
 			div.toggleCaption
 				i.fa.fa-plus
-
-		figcaption
-			p#caption We were blown away by the amount of uses our Mockuuups. We found a lot of shots with Mockuuups on Dribbble and we really appreciate it!
+		div.container
+			figcaption
+				div#caption
+					p#captionTitle
+					p#captionBody 
 	header
 		h1 James Jean Illustration
 	article
-		.image.image1(data-caption="We were blown away by the amount of uses our Mockuuups. We found a lot of shots with Mockuuups on Dribbble and we really appreciate it!")
-		.image.image2(data-caption="Hello world 2")
-		.image.image3(data-caption="Hello world 3")
-		.image.image4(data-caption="Hello world 4")
-		.image.image5(data-caption="Hello world 5")
-		.image.image6(data-caption="Hello world 6")
-		.image.image7(data-caption="Hello world 7")
-		.image.image8(data-caption="Hello world 8")
-		.image.image9(data-caption="Hello world 9")
-		.image.image10(data-caption="Hello world 10")
-		.image.image11(data-caption="Hello world 11")
-		.image.image12(data-caption="Hello world 12")
-			
+		.image.image1(data-title="Spirited Away" data-caption="Ducks")
+		.image.image2(data-title="Howl's Moving Castle" data-caption="We were blown away by the amount of uses our Mockuuups. We found a lot of shots with Mockuuups on Dribbble and we really appreciate it!")
+		.image.image3(data-title="Howl's Moving Castle" data-caption="Hello world 3")
+		.image.image4(data-title="The Wind Rises" data-caption="Hello world 4")
+		.image.image5(data-title="My Neighbour Totoro" data-caption="Hello world 5")
+		.image.image6(data-title="Ponyo" data-caption="Hello world 6")
+		.image.image7(data-title="Castle In The Sky" data-caption="Hello world 7")
+		.image.image8(data-title="Up On Poppy Hill" data-caption="Hello world 8")
+		.image.image9(data-title="The Secret World of Arrietty" data-caption="Hello world 9")
+		.image.image10(data-title="Princess Mononoke" data-caption="Hello world 10")
+		.image.image11(data-title="Princess Mononoke" data-caption="Hello world 11")
+		.image.image12(data-title="Princess Mononoke" data-caption="Hello world 12")
+	
+	script(type='text/javascript', src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+	script(type='text/javascript', src="gallery.js")
 
 			//- figcaption
 			//- 	h2 Image 1
