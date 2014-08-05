@@ -56,18 +56,33 @@ body,
 html {
 	height: 100%;
 	margin: 0;
+	font-family: 'Open Sans', 'Helvetica', sans-serif;
 } 
 
+a {
+	text-decoration: none;
+	color: #888;
+	&:visited {
+		color: #888;
+	}
+}
 
 header {
 	text-align: center;
-	padding: 40px 0;
+	padding: 60px 0;
 	font-weight: 900;
+
 	h1 {
-		font-family: 'Open Sans', 'Helvetica', sans-serif;
-		font-size: 48px;
+		font-size: 60px;
 		color:$darkgrey;
+		margin: 0 auto;
 	}
+		
+	p {
+		font-weight:300;
+		color:#aaa;
+		margin-top: 0;
+		}
 }
 
 //----------------------------------------------------------------

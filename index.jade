@@ -2,7 +2,7 @@
 html(lang="en")
 head
 	meta(charset="UTF-8")
-	title Miyazaki Films Gallery 
+	title Miyazaki Films | jQuery Gallery
 	link(rel="stylesheet", href="css/style.css")
 	link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css')
 
@@ -27,20 +27,39 @@ body
 					p#captionTitle
 					p#captionBody 
 	header
+		a(href="https://github.com/AlexWinterGhostImage/fuzzy-ironman")
+			img(style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png")
 		h1 Miyazaki Films
+		p jQuery gallery by 
+			a(href="https://twitter.com/alexispcurio") @alexispcurio
+			|  and 
+			a(href="https://twitter.com/winterwei") @winterwei
 	article
+		// All captions taken from Wikipedia
 		.image.image1(data-title="Castle In the Sky" data-caption="Castle in the Sky is a 1986 Japanese animated adventure film written and directed by Hayao Miyazaki and is also the first film produced and released by Studio Ghibli. The film was distributed by Toei Kabushiki Kaisha.")
+
 		.image.image2(data-title="Howl's Moving Castle" data-caption="Howl's Moving Castle is a 2004 Japanese animated fantasy film scripted and directed by Hayao Miyazaki. The film is based on the novel of the same name by English writer Diana Wynne Jones. ")
-		.image.image3(data-title="Princess Mononoke" data-caption="Another still from the movie.")
-		.image.image4(data-title="The Wind Rises" data-caption="Hello world 4")
-		.image.image5(data-title="My Neighbour Totoro" data-caption="Hello world 5")
-		.image.image6(data-title="Ponyo" data-caption="Hello world 6")
-		.image.image7(data-title="Castle In The Sky" data-caption="Hello world 7")
-		.image.image8(data-title="Up On Poppy Hill" data-caption="Hello world 8")
-		.image.image9(data-title="The Secret World of Arrietty" data-caption="Hello world 9")
-		.image.image10(data-title="Princess Mononoke" data-caption="Hello world 10")
-		.image.image11(data-title="Princess Mononoke" data-caption="Hello world 11")
-		.image.image12(data-title="Princess Mononoke" data-caption="Hello world 12")
+
+		.image.image3(data-title="Princess Mononoke" data-caption="Princess Mononoke is a period drama set in the late Muromachi period (approximately 1337 to 1573) of Japan, but with fantasy elements. The story follows the young Emishi warrior Ashitaka's involvement in a struggle between forest gods and the humans who consume its resources.")
+
+		.image.image4(data-title="Spirited Away" data-caption="Spirited Away tells the story of Chihiro Ogino (Hiiragi), a sullen ten-year-old girl who, while moving to a new neighborhood, enters the spirit world. After her parents are transformed into pigs by the witch Yubaba (Natsuki), Chihiro takes a job working in Yubaba's bathhouse to find a way to free herself and her parents and return to the human world.")
+
+		.image.image5(data-title="Princess Mononoke" data-caption="Princess Mononoke is a period drama set in the late Muromachi period (approximately 1337 to 1573) of Japan, but with fantasy elements. The story follows the young Emishi warrior Ashitaka's involvement in a struggle between forest gods and the humans who consume its resources.")
+
+		.image.image6(data-title="My Neighbour Totoro" data-caption="My Neighbor Totoro is a 1988 Japanese animated fantasy film written and directed by Hayao Miyazaki and produced by Studio Ghibli. The film — which stars the voice actors Noriko Hidaka, Chika Sakamoto, and Hitoshi Takagi — tells the story of the two young daughters (Satsuko and Mei) of a professor and their interactions with friendly wood spirits in postwar rural Japan. The film won the Animage Anime Grand Prix prize and the Mainichi Film Award for Best Film in 1988.")
+
+		.image.image7(data-title="Howl's Moving Castle" data-caption="Howl's Moving Castle is a 2004 Japanese animated fantasy film scripted and directed by Hayao Miyazaki. The film is based on the novel of the same name by English writer Diana Wynne Jones. ")
+
+		.image.image8(data-title="Up On Poppy Hill" data-caption="Set in 1963 Yokohama, Japan, the film tells the story of Umi Matsuzaki, a high school girl living in a boarding house, Coquelicot Manor. When Umi meets Shun Kazama, a member of the school's newspaper club, they decide to clean up the school's clubhouse, Quartier Latin. However, Tokumaru, the chairman of the local high school and a businessman, intends to demolish the building for redevelopment and Umi and Shun, along with Shirō Mizunuma, must persuade him to reconsider.")
+
+		.image.image9(data-title="The Secret World of Arrietty" data-caption="Arrietty, titled The Borrower Arrietty in Japan and The Secret World of Arrietty in North America, is a 2010 Japanese animated fantasy film directed by Hiromasa Yonebayashi and scripted by Hayao Miyazaki and Keiko Niwa. It is based on The Borrowers by Mary Norton, an English author of children's books, about a family of tiny people who live secretly in the walls and floors of a typical household, borrowing items from humans to survive.")
+
+		.image.image10(data-title="Princess Mononoke" data-caption="Princess Mononoke is a period drama set in the late Muromachi period (approximately 1337 to 1573) of Japan, but with fantasy elements. The story follows the young Emishi warrior Ashitaka's involvement in a struggle between forest gods and the humans who consume its resources.")
+
+		.image.image11(data-title="Ponyo" data-caption="Initially titled in English as Ponyo on the Cliff by the Sea, is a 2008 Japanese animated fantasy film written and directed by Hayao Miyazaki of Studio Ghibli and Toho. It is Miyazaki's eighth film for Ghibli, and his tenth overall. The plot centres on a goldfish named Ponyo who befriends a five-year-old human boy, Sōsuke, and wants to become a human girl.")
+			
+		.image.image12(data-title="The Wind Rises" data-caption="The Wind Rises is a fictionalized biography of Jiro Horikoshi (1903–1982), designer of the Mitsubishi A5M and its successor, the Mitsubishi A6M Zero; both aircraft were used by the Empire of Japan during World War II. The film is adapted from Miyazaki's manga of the same name, which was in turn loosely based on the 1937 short story The Wind Has Risen by Tatsuo Hori. It was the final film directed by Miyazaki before his retirement in September 2013.")
+
 	
 	script(type='text/javascript', src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
 	script(type='text/javascript', src="gallery.js")
