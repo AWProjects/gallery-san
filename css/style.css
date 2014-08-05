@@ -138,6 +138,8 @@ a {
   color: #888; }
   a:visited {
     color: #888; }
+  a:hover {
+    color: #444; }
 
 header {
   text-align: center;
@@ -327,30 +329,24 @@ header {
   left: 0 !important; }
 
 .button {
-  display: none;
   opacity: 0;
-  -webkit-transition-delay: 3s;
-          transition-delay: 3s;
   position: absolute;
   width: 15%;
   height: 400px;
   z-index: 200;
-  color: white; }
+  color: white;
+  -webkit-transition: opacity 2s ease-in-out;
+          transition: opacity 2s ease-in-out; }
 
 .button.delay {
   display: block !important;
-  opacity: 1 !important;
-  -webkit-transition: opacity 2s ease-in-out;
-          transition: opacity 2s ease-in-out; }
+  opacity: 1 !important; }
 
 .fa {
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); }
 
 .closeButton {
-  display: none;
   opacity: 0;
-  -webkit-transition-delay: 3s;
-          transition-delay: 3s;
   width: 75px;
   height: 75px;
   z-index: 20;
@@ -382,10 +378,7 @@ header {
     padding-left: 20%; }
 
 .bottomContainer {
-  display: none;
   opacity: 0;
-  -webkit-transition-delay: 3s;
-          transition-delay: 3s;
   position: absolute;
   width: 100%;
   height: 120px;
