@@ -18,61 +18,73 @@ var $firstImageButtons = $('.closeButton,.nextButton,.bottomContainer');
 var $lastImageButtons = $('.closeButton,.backButton,.bottomContainer');
 
 
-	//function to change the background image
-	var changeBackgroundImage = function() {
-		var backgroundImage = $currentImage.css('background-image');
-		$imagePanel.css('background-image',backgroundImage);
+galleryPlugin.init = function() {
+	$imagePanel.hide();
 
-		//retrieve caption from data-caption and set it
-		//to #caption
-		// var imageCapTitle = $currentImage.data('title');
+	galleryPlugin.clickImage();
 
+	galleryPlugin.toggleCaption();
+	galleryPlugin.closeImage();
+	galleryPlugin.previousImage();
+	galleryPlugin.nextImage();
+
+};
+
+
+//function to change the background image
+galleryPlugin.changeBackgroundImage = function() {
+	var backgroundImage = $currentImage.css('background-image');
+	$imagePanel.css('background-image',backgroundImage);
+};
+
+
+//retrieve/load the caption data for the current image
+galleryPlugin.retrieveCaptionData = function(){
+	var imageCapTitle = $currentImage.data('title');
+	var imageCapBody = $currentImage.data('caption');
+	// $caption.text(imageCapTitle).hide();
+	$captionTitle.text(imageCapTitle);
+	$captionBody.text(imageCapBody);
+};
+
+
+
+//function to find position of the grid version of the image (when you close the fullsize version it needs to minimize back into the correct position in the grid)
+galleryPlugin.assignImagePosition = function(findForThis) {
+	var position = findForThis.position();
+	var imageOffsetTop = findForThis.offset().top;
+	var scrollTop = $(window).scrollTop();
+	var imageWidth = findForThis.width();
+	var imageHeight = findForThis.height();
+	var imageTop = imageOffsetTop - scrollTop;
+
+	$imagePanel.css({
+		top: imageTop,
+		left: position.left,
+		width: imageWidth,
+		height: imageHeight
+	});
+};
+
+
+//a function that hide captions if it's visible when a button is clicked
+galleryPlugin.hideCaption = function() {
+	if($caption.css('display') === 'block') {
+		$caption.slideToggle('easeInOut');
 	};
-	var retrieveCaptionData = function(){
-		var imageCapTitle = $currentImage.data('title');
-		var imageCapBody = $currentImage.data('caption');
-		// $caption.text(imageCapTitle).hide();
-		$captionTitle.text(imageCapTitle);
-		$captionBody.text(imageCapBody);
-	};
+};
 
-
-
-	//function to find position of the grid version of the image (when you close the fullsize version it needs to minimize back into the correct position in the grid)
-	var assignImagePosition = function(findForThis) {
-		var position = findForThis.position();
-		var imageOffsetTop = findForThis.offset().top;
-		var scrollTop = $(window).scrollTop();
-		var imageWidth = findForThis.width();
-		var imageHeight = findForThis.height();
-		var imageTop = imageOffsetTop - scrollTop;
-
-		$imagePanel.css({
-			top: imageTop,
-			left: position.left,
-			width: imageWidth,
-			height: imageHeight
-		});
-	};
-
-
-	//a function that hide captions if it's visible when a button is clicked
-	var hideCaption = function() {
-		if($caption.css('display') === 'block') {
-			$caption.slideToggle('easeInOut');
-		};
-	};
-
-	//WHEN AN IMAGE IN THE GRID IS CLICKED
+//WHEN AN IMAGE IN THE GRID IS CLICKED
+galleryPlugin.clickImage = function() {
 	$image.on('click', function(){
 		$currentImage = $(this);
 		// $('figcaption').fadeTo(500,1);
 		
 		//set the background image to corresponding image clicked
-		changeBackgroundImage();
-		retrieveCaptionData();
+		galleryPlugin.changeBackgroundImage();
+		galleryPlugin.retrieveCaptionData();
 
-		assignImagePosition($currentImage);
+		galleryPlugin.assignImagePosition($currentImage);
 
 		//3. show imagePanel
 		$imagePanel.fadeIn('slow');
@@ -97,30 +109,33 @@ var $lastImageButtons = $('.closeButton,.backButton,.bottomContainer');
 			$button.fadeIn().addClass('delay');
 			// $delay.css('transition','opacity 0.1s ease-in-out');
 		};
-	
+	}); //END OF $IMAGE CLICK	
 
-
-	}); //END OF $IMAGE CLICK 
+};	
 
 
 //----------------------------------------------------------------
 //TOGGLE CAPTION
 //----------------------------------------------------------------
 
-	//TOGGLE CAPTION INFO
+//TOGGLE CAPTION INFO
+galleryPlugin.toggleCaption = function(){
+	
 	$toggleCaption.on('click', function(){
 		$caption.slideToggle('easeInOut');
 	});
+};
 
 //----------------------------------------------------------------
 //CLOSE FULLSIZE IMAGE
 //----------------------------------------------------------------
 
+galleryPlugin.closeImage = function(){
 	$close.on('click', function(){
 
-		assignImagePosition($currentImage);
+		galleryPlugin.assignImagePosition($currentImage);
 
-		hideCaption();
+		galleryPlugin.hideCaption();
 		// $('figcaption').fadeTo(500,0);
 		$imagePanel.delay(10).queue(function(){
 		        $imagePanel.removeClass('full');
@@ -132,25 +147,24 @@ var $lastImageButtons = $('.closeButton,.backButton,.bottomContainer');
 			$(this).dequeue();
 		});
 
-
-
-
 		$button.removeClass('delay');
 
 	});
+};
 
 //----------------------------------------------------------------
 //BACK BUTTON
 //----------------------------------------------------------------
 
-	//click on back button goes to the prev img
-	//back button doesn't show on img1
+//click on back button goes to the prev img
+//back button doesn't show on img1
+galleryPlugin.previousImage = function(){
 	$back.on('click',function(){
 		$currentImage = $currentImage.prev();
-		hideCaption();
-		changeBackgroundImage();
+		galleryPlugin.hideCaption();
+		galleryPlugin.changeBackgroundImage();
 		$(this).delay(500).queue(function(){
-			retrieveCaptionData();
+			galleryPlugin.retrieveCaptionData();
 			$(this).dequeue();
 		});
 
@@ -168,21 +182,22 @@ var $lastImageButtons = $('.closeButton,.backButton,.bottomContainer');
 		};
 
 	});
-
+};
 
 
 //----------------------------------------------------------------
 //NEXT BUTTON
 //----------------------------------------------------------------
 
-	//click on next button goes to the next img
-	//next button doesn't show on image:last-child
+//click on next button goes to the next img
+//next button doesn't show on image:last-child
+galleryPlugin.nextImage = function(){
 	$next.on('click',function(){
 		$currentImage = $currentImage.next();
-			hideCaption();
-			changeBackgroundImage();
+			galleryPlugin.hideCaption();
+			galleryPlugin.changeBackgroundImage();
 		$(this).delay(500).queue(function(){
-			retrieveCaptionData();
+			galleryPlugin.retrieveCaptionData();
 			$(this).dequeue();
 		});
 
@@ -201,8 +216,11 @@ var $lastImageButtons = $('.closeButton,.backButton,.bottomContainer');
 
 
 	});
+};
 
+//----------------------------------------------------------------
+//RUN THE GALLERY
+//----------------------------------------------------------------
 $(function(){
-
-
+	galleryPlugin.init();
 });
