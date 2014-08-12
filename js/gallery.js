@@ -1,22 +1,21 @@
+galleryPlugin = {};
 
-$(function(){
+//define variables
+var $imagePanel = $('.imagePanel');
+var $image = $('article div');
+var $caption = $('#caption');
+var $captionTitle = $('#captionTitle');
+var $captionBody = $('#captionBody');
+var $toggleCaption = $('.toggleCaption');
+var $button = $('.button');
+var $back = $('.backButton');
+var $next = $('.nextButton');
+var $close = $('.closeButton');
+var $delay = $('.delay');
+var $currentImage;
 
-	//define variables
-	var $imagePanel = $('.imagePanel');
-	var $image = $('article div');
-	var $caption = $('#caption');
-	var $captionTitle = $('#captionTitle');
-	var $captionBody = $('#captionBody');
-	var $toggleCaption = $('.toggleCaption');
-	var $button = $('.button');
-	var $back = $('.backButton');
-	var $next = $('.nextButton');
-	var $close = $('.closeButton');
-	var $delay = $('.delay');
-	var $currentImage;
-
-	var $firstImageButtons = $('.closeButton,.nextButton,.bottomContainer');
-	var $lastImageButtons = $('.closeButton,.backButton,.bottomContainer');
+var $firstImageButtons = $('.closeButton,.nextButton,.bottomContainer');
+var $lastImageButtons = $('.closeButton,.backButton,.bottomContainer');
 
 
 	//function to change the background image
@@ -71,9 +70,7 @@ $(function(){
 		
 		//set the background image to corresponding image clicked
 		changeBackgroundImage();
-
 		retrieveCaptionData();
-
 
 		assignImagePosition($currentImage);
 
@@ -88,12 +85,12 @@ $(function(){
 
 		//fade in buttons for image clicked
 		if($currentImage.hasClass('image1')) {
-			$firstImageButtons.fadeIn().addClass('delay');
+			$firstImageButtons.addClass('delay');
 			// $delay.css('transition','opacity 0.1s ease-in-out');
 
 		}
 		else if($currentImage.is(':last-child')){
-			$lastImageButtons.fadeIn().addClass('delay');
+			$lastImageButtons.addClass('delay');
 			// $delay.css('transition','opacity 0.1s ease-in-out');
 		}
 		else {
@@ -129,9 +126,16 @@ $(function(){
 		        $imagePanel.removeClass('full');
 		        $(this).dequeue();
 		      });
-		// $button.fadeTo('fast',0);
-		$button.fadeOut().removeClass('delay');
-		$imagePanel.fadeOut(900); 
+
+		$imagePanel.delay(1000).queue(function(){
+			$imagePanel.fadeOut();
+			$(this).dequeue();
+		});
+
+
+
+
+		$button.removeClass('delay');
 
 	});
 
@@ -150,7 +154,7 @@ $(function(){
 			$(this).dequeue();
 		});
 
-
+		//Hide the back button if the current image is the first image
 		if($currentImage.hasClass('image1')) {
 			$back.hide().removeClass('delay');
 			$firstImageButtons.fadeIn().addClass('delay');			
@@ -182,7 +186,7 @@ $(function(){
 			$(this).dequeue();
 		});
 
-		
+		//Hide the next button if the current image is the last image
 		if($currentImage.hasClass('image1')) {
 			$back.hide().removeClass('delay');
 			$firstImageButtons.fadeIn().addClass('delay');
@@ -197,4 +201,8 @@ $(function(){
 
 
 	});
+
+$(function(){
+
+
 });
