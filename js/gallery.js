@@ -17,8 +17,13 @@ var $currentImage;
 var $firstImageButtons = $('.closeButton,.nextButton,.bottomContainer');
 var $lastImageButtons = $('.closeButton,.backButton,.bottomContainer');
 
-var gridSquare = $image.width(); 
+// var gridSquare = $image.width(); 
+var imageWidth = $image.width();
+var imageHeight = $image.width();
 
+
+//----------------------------------------------------------------
+//Gallery Init
 galleryPlugin.init = function() {
 	$imagePanel.hide();
 
@@ -27,10 +32,10 @@ galleryPlugin.init = function() {
 	galleryPlugin.closeImage();
 	galleryPlugin.previousImage();
 	galleryPlugin.nextImage();
-
 };
 
 
+//----------------------------------------------------------------
 //function to change the background image
 galleryPlugin.changeBackgroundImage = function() {
 	var backgroundImage = $currentImage.css('background-image');
@@ -38,6 +43,7 @@ galleryPlugin.changeBackgroundImage = function() {
 };
 
 
+//----------------------------------------------------------------
 //retrieve/load the caption data for the current image
 galleryPlugin.retrieveCaptionData = function(){
 	var imageCapTitle = $currentImage.data('title');
@@ -48,16 +54,17 @@ galleryPlugin.retrieveCaptionData = function(){
 };
 
 
-
+//----------------------------------------------------------------
 //function to find position of the grid version of the image (when you close the fullsize version it needs to minimize back into the correct position in the grid)
 galleryPlugin.assignImagePosition = function(findForThis) {
-
 	var position = findForThis.position();
 	var imageOffsetTop = findForThis.offset().top;
 	var scrollTop = $(window).scrollTop();
+	var imageTop = imageOffsetTop - scrollTop;
+	
+	//These are local variables named imageWidth and imageHeight (do not affect global variables with same name.)
 	var imageWidth = findForThis.width();
 	var imageHeight = findForThis.height();
-	var imageTop = imageOffsetTop - scrollTop;
 
 	$imagePanel.css({
 		position: 'fixed',
@@ -68,8 +75,19 @@ galleryPlugin.assignImagePosition = function(findForThis) {
 	});
 };
 
+
+//----------------------------------------------------------------
+//IMAGE POSITIONING FOR CLOSE
+//----------------------------------------------------------------
+
+/*This needs to happen in two stages to return the imagePanel to its point of origin WHILE scrolling takes place
+	(- Solving bugs with positioning while scrolling)
+PART 1: reassigns the position from fixed to absolute (and changes top and left values to correspond to this new position, i.e. position absolute)
+PART 2: reassigns position again to facilitate a smooth animation (snapping back to size of grid image)
+*/
+
 //ASSIGN IMAGE POSITION ON CLOSE, PART 1
-galleryPlugin.assignImagePositionClose = function(findForThis) {
+galleryPlugin.assignImagePositionClose1 = function() {
 	var positionCloseTop = $(window).scrollTop() + 'px';
 	var positionCloseLeft = 0 + 'px'; 
 
@@ -79,36 +97,27 @@ galleryPlugin.assignImagePositionClose = function(findForThis) {
 		left: positionCloseLeft,
 		width: '100%',
 		height: '100%'
-
 	});
-	console.log(positionCloseTop + " " + positionCloseLeft);
-
 };
 
 //ASSIGN IMAGE POSITION ON CLOSE, PART 2
-galleryPlugin.assignImagePositionT2 = function(findForThat) {
-	var positionCloseTopT2 = findForThat.position().top;
-	var positionCloseLeftT2 = findForThat.position().left;
+galleryPlugin.assignImagePositionClose2 = function(findForThis) {
+	var positionCloseTopT2 = findForThis.position().top;
+	var positionCloseLeftT2 = findForThis.position().left;
 
 	$imagePanel.css({
 		top: positionCloseTopT2,
 		left: positionCloseLeftT2,
-		width: gridSquare,
-		height: gridSquare
+		width: imageWidth,
+		height: imageHeight
 	});
-
-	console.log(positionCloseTopT2 + " " + positionCloseLeftT2);
 };
 
 
-//a function that hide captions if it's visible when a button is clicked
-galleryPlugin.hideCaption = function() {
-	if($caption.css('display') === 'block') {
-		$caption.slideToggle('easeInOut');
-	};
-};
+//----------------------------------------------------------------
+//IMAGE ON CLICK
+//----------------------------------------------------------------
 
-//WHEN AN IMAGE IN THE GRID IS CLICKED
 galleryPlugin.clickImage = function() {
 	$image.on('click', function(){
 		$currentImage = $(this);
@@ -141,8 +150,7 @@ galleryPlugin.clickImage = function() {
 		else {
 			$button.addClass('delay');
 		};
-	}); //END OF $IMAGE CLICK	
-
+	}); 	
 };	
 
 
@@ -150,7 +158,6 @@ galleryPlugin.clickImage = function() {
 //TOGGLE CAPTION
 //----------------------------------------------------------------
 
-//TOGGLE CAPTION INFO
 galleryPlugin.toggleCaption = function(){
 	
 	$toggleCaption.on('click', function(){
@@ -158,35 +165,55 @@ galleryPlugin.toggleCaption = function(){
 	});
 };
 
+
+//----------------------------------------------------------------
+//HIDE CAPTION
+//----------------------------------------------------------------
+
+//Hide caption if caption is visible when a button is clicked
+galleryPlugin.hideCaption = function() {
+	if($caption.css('display') === 'block') {
+		$caption.slideToggle('easeInOut');
+	};
+};
+
+
 //----------------------------------------------------------------
 //CLOSE FULLSIZE IMAGE
 //----------------------------------------------------------------
 
 galleryPlugin.closeImage = function(){
 	$close.on('click', function(){
-		//T1
+
+		//hide the caption if caption is visible
 		galleryPlugin.hideCaption();
+		//remove !important positioning that keeps the imagePanel at fullscreen size
 		$imagePanel.removeClass('full');
-		galleryPlugin.assignImagePositionClose($currentImage);
+
+		//Reassigns the position from fixed to absolute (and changes top and left values to correspond to this new position, i.e. position absolute)
+		galleryPlugin.assignImagePositionClose1();
 		
 		//Refresh/debug
 		$imagePanel.width();
+		//remove transition so animation does not start while position is changing from fixed to absolute
 		$imagePanel.removeClass('animated');
-		
-		//T2
+		//Refresh/debug
 		$imagePanel.width();
+		//Add class again to allow for css transition 
 		$imagePanel.addClass('animated');
-		galleryPlugin.assignImagePositionT2($currentImage);
+		//Position and change width/height to the origin size of the grid image so imagePanel will now start transition to scale down to the right place regardless of scroll position)
+		galleryPlugin.assignImagePositionClose2($currentImage);
 
+		//Once transition is over, hide the ImagePanel
 		$imagePanel.delay(1000).queue(function(){
 			$imagePanel.css('display','none');
 			$(this).dequeue();
 		});
-
+		//Once transition if over, hide the buttons
 		$button.removeClass('delay');
-
 	});
 };
+
 
 //----------------------------------------------------------------
 //BACK BUTTON
@@ -216,7 +243,6 @@ galleryPlugin.previousImage = function(){
 		else {
 			$button.fadeIn().addClass('delay');
 		};
-
 	});
 };
 
@@ -249,10 +275,9 @@ galleryPlugin.nextImage = function(){
 		else {
 			$button.fadeIn().addClass('delay');
 		};
-
-
 	});
 };
+
 
 //----------------------------------------------------------------
 //RUN THE GALLERY
@@ -260,3 +285,4 @@ galleryPlugin.nextImage = function(){
 $(function(){
 	galleryPlugin.init();
 });
+
