@@ -69,7 +69,7 @@ grunt.initConfig({
 	//CONCATENATE FILES
 	concat: {
 		options: {
-			separator: ';'
+			// separator: ';'
 		},
 	  css: {
 	    src: ['css/*.css'],
@@ -104,8 +104,10 @@ grunt.initConfig({
 	//COPY
 	copy: {
 	  main: {
-	    src: 'index.html',
-	    dest: 'production/',
+	  	files: [
+	  		{src: ['index.html'], dest: 'production/'},
+	  		{src: ['images/**'], dest: 'production/'}
+	    ]
 	  }
 	},	  
 
@@ -145,7 +147,7 @@ grunt.loadNpmTasks('grunt-contrib-copy');
 
 
 // Default task(s).
-grunt.registerTask('default', ['connect', 'watch']);
+grunt.registerTask('default', ['watch']);
 grunt.registerTask('svg', ['svginject']);
 grunt.registerTask('starter',['mkdir']);
 grunt.registerTask('mkprod',['concat','cssmin','uglify','copy']);

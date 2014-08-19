@@ -17,7 +17,6 @@ var $currentImage;
 var $firstImageButtons = $('.closeButton,.nextButton,.bottomContainer');
 var $lastImageButtons = $('.closeButton,.backButton,.bottomContainer');
 
-var gridSquare = $image.width(); 
 
 galleryPlugin.init = function() {
 	$imagePanel.hide();
@@ -68,36 +67,16 @@ galleryPlugin.assignImagePosition = function(findForThis) {
 	});
 };
 
-//ASSIGN IMAGE POSITION ON CLOSE, PART 1
 galleryPlugin.assignImagePositionClose = function(findForThis) {
-	var positionCloseTop = $(window).scrollTop() + 'px';
-	var positionCloseLeft = 0 + 'px'; 
+	var positionCloseTop = findForThis.position().top;
+	var positionCloseLeft = findForThis.position().left; 
 
 	$imagePanel.css({
 		position: 'absolute',
 		top: positionCloseTop,
-		left: positionCloseLeft,
-		width: '100%',
-		height: '100%'
-
-	});
-	console.log(positionCloseTop + " " + positionCloseLeft);
-
-};
-
-//ASSIGN IMAGE POSITION ON CLOSE, PART 2
-galleryPlugin.assignImagePositionT2 = function(findForThat) {
-	var positionCloseTopT2 = findForThat.position().top;
-	var positionCloseLeftT2 = findForThat.position().left;
-
-	$imagePanel.css({
-		top: positionCloseTopT2,
-		left: positionCloseLeftT2,
-		width: gridSquare,
-		height: gridSquare
+		left: positionCloseLeft
 	});
 
-	console.log(positionCloseTopT2 + " " + positionCloseLeftT2);
 };
 
 
@@ -121,7 +100,7 @@ galleryPlugin.clickImage = function() {
 		galleryPlugin.assignImagePosition($currentImage);
 
 		//3. show imagePanel
-		$imagePanel.fadeIn('slow').addClass('animated');
+		$imagePanel.fadeIn('slow');
 
 		//4. expand imagePanel to the full screen
 		$(this).delay(10).queue(function(){
@@ -132,14 +111,16 @@ galleryPlugin.clickImage = function() {
 		//fade in buttons for image clicked
 		if($currentImage.hasClass('image1')) {
 			$firstImageButtons.addClass('delay');
+			// $button.css('transition','opacity 0.5s ease-in-out');
 
 		}
 		else if($currentImage.is(':last-child')){
 			$lastImageButtons.addClass('delay');
-
+			// $button.css('transition','opacity 0.5s ease-in-out');
 		}
 		else {
 			$button.addClass('delay');
+			// $button.css('transition','opacity 0.5s ease-in-out');
 		};
 	}); //END OF $IMAGE CLICK	
 
@@ -164,19 +145,17 @@ galleryPlugin.toggleCaption = function(){
 
 galleryPlugin.closeImage = function(){
 	$close.on('click', function(){
-		//T1
-		galleryPlugin.hideCaption();
-		$imagePanel.removeClass('full');
 		galleryPlugin.assignImagePositionClose($currentImage);
-		
+
 		//Refresh/debug
 		$imagePanel.width();
-		$imagePanel.removeClass('animated');
-		
-		//T2
-		$imagePanel.width();
-		$imagePanel.addClass('animated');
-		galleryPlugin.assignImagePositionT2($currentImage);
+		// galleryPlugin.assignImagePosition($currentImage);
+
+		galleryPlugin.hideCaption();
+		$imagePanel.delay(10).queue(function(){
+		        $imagePanel.removeClass('full');
+		        $(this).dequeue();
+		      });
 
 		$imagePanel.delay(1000).queue(function(){
 			$imagePanel.css('display','none');

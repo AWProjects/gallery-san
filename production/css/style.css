@@ -318,9 +318,7 @@ header {
   left: 0;
   display: none;
   background: url("images/img1.jpg") center;
-  background-size: cover; }
-
-.imagePanel.animated {
+  background-size: cover;
   -webkit-transition: all 1s ease-in-out;
           transition: all 1s ease-in-out; }
 

@@ -154,8 +154,12 @@ header {
 	display:none;
 	background: url('images/img1.jpg') center;
 	background-size: cover;
-	transition: all 1s ease-in-out;
+	// transition: all 1s ease-in-out;
 	// -webkit-backface-visibility: hidden;
+}
+
+.imagePanel.animated {
+	transition: all 1s ease-in-out;
 }
 
 .imagePanel.full {
