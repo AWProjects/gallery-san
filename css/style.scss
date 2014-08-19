@@ -155,6 +155,7 @@ header {
 	background: url('images/img1.jpg') center;
 	background-size: cover;
 	transition: all 1s ease-in-out;
+	// -webkit-backface-visibility: hidden;
 }
 
 .imagePanel.full {
@@ -169,7 +170,7 @@ header {
 	@include divPosition (absolute,15%,400px,200);
 	// background-color: green;
 	color: white;
-	transition:opacity 2s ease-in-out;
+	transition:opacity 0.5s ease-in-out;
 }
 
 

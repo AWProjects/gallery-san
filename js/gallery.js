@@ -22,7 +22,6 @@ galleryPlugin.init = function() {
 	$imagePanel.hide();
 
 	galleryPlugin.clickImage();
-
 	galleryPlugin.toggleCaption();
 	galleryPlugin.closeImage();
 	galleryPlugin.previousImage();
@@ -51,6 +50,7 @@ galleryPlugin.retrieveCaptionData = function(){
 
 //function to find position of the grid version of the image (when you close the fullsize version it needs to minimize back into the correct position in the grid)
 galleryPlugin.assignImagePosition = function(findForThis) {
+
 	var position = findForThis.position();
 	var imageOffsetTop = findForThis.offset().top;
 	var scrollTop = $(window).scrollTop();
@@ -59,11 +59,24 @@ galleryPlugin.assignImagePosition = function(findForThis) {
 	var imageTop = imageOffsetTop - scrollTop;
 
 	$imagePanel.css({
+		position: 'fixed',
 		top: imageTop,
 		left: position.left,
 		width: imageWidth,
 		height: imageHeight
 	});
+};
+
+galleryPlugin.assignImagePositionClose = function(findForThis) {
+	var positionCloseTop = findForThis.position().top;
+	var positionCloseLeft = findForThis.position().left; 
+
+	$imagePanel.css({
+		position: 'absolute',
+		top: positionCloseTop,
+		left: positionCloseLeft
+	});
+
 };
 
 
@@ -98,16 +111,16 @@ galleryPlugin.clickImage = function() {
 		//fade in buttons for image clicked
 		if($currentImage.hasClass('image1')) {
 			$firstImageButtons.addClass('delay');
-			// $delay.css('transition','opacity 0.1s ease-in-out');
+			// $button.css('transition','opacity 0.5s ease-in-out');
 
 		}
 		else if($currentImage.is(':last-child')){
 			$lastImageButtons.addClass('delay');
-			// $delay.css('transition','opacity 0.1s ease-in-out');
+			// $button.css('transition','opacity 0.5s ease-in-out');
 		}
 		else {
-			$button.fadeIn().addClass('delay');
-			// $delay.css('transition','opacity 0.1s ease-in-out');
+			$button.addClass('delay');
+			// $button.css('transition','opacity 0.5s ease-in-out');
 		};
 	}); //END OF $IMAGE CLICK	
 
@@ -132,18 +145,20 @@ galleryPlugin.toggleCaption = function(){
 
 galleryPlugin.closeImage = function(){
 	$close.on('click', function(){
+		galleryPlugin.assignImagePositionClose($currentImage);
 
-		galleryPlugin.assignImagePosition($currentImage);
+		//Refresh/debug
+		$imagePanel.width();
+		// galleryPlugin.assignImagePosition($currentImage);
 
 		galleryPlugin.hideCaption();
-		// $('figcaption').fadeTo(500,0);
 		$imagePanel.delay(10).queue(function(){
 		        $imagePanel.removeClass('full');
 		        $(this).dequeue();
 		      });
 
 		$imagePanel.delay(1000).queue(function(){
-			$imagePanel.fadeOut();
+			$imagePanel.css('display','none');
 			$(this).dequeue();
 		});
 
