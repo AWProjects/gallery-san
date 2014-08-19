@@ -220,7 +220,6 @@ galleryPlugin.closeImage = function(){
 //----------------------------------------------------------------
 
 //click on back button goes to the prev img
-//back button doesn't show on img1
 galleryPlugin.previousImage = function(){
 	$back.on('click',function(){
 		$currentImage = $currentImage.prev();
@@ -252,7 +251,6 @@ galleryPlugin.previousImage = function(){
 //----------------------------------------------------------------
 
 //click on next button goes to the next img
-//next button doesn't show on image:last-child
 galleryPlugin.nextImage = function(){
 	$next.on('click',function(){
 		$currentImage = $currentImage.next();
