@@ -19,7 +19,7 @@ var $lastImageButtons = $('.closeButton,.backButton,.bottomContainer');
 
 // var gridSquare = $image.width(); 
 var imageWidth = $image.width();
-var imageHeight = $image.width();
+var imageHeight = $image.height();
 
 
 //----------------------------------------------------------------
@@ -63,8 +63,8 @@ galleryPlugin.assignImagePosition = function(findForThis) {
 	var imageTop = imageOffsetTop - scrollTop;
 	
 	//These are local variables named imageWidth and imageHeight (do not affect global variables with same name.)
-	var imageWidth = findForThis.width();
-	var imageHeight = findForThis.height();
+	imageWidth = findForThis.width();
+	imageHeight = findForThis.height();
 
 	$imagePanel.css({
 		position: 'fixed',
@@ -105,6 +105,13 @@ galleryPlugin.assignImagePositionClose2 = function(findForThis) {
 	var positionCloseTopT2 = findForThis.position().top;
 	var positionCloseLeftT2 = findForThis.position().left;
 
+	//If window has been resized, check the imageWidth give it a new value 
+	//(so on close the imagePanel will match the grid image size)
+	if(!(imageWidth===$image.width())) {
+		imageWidth = $image.width();
+		imageHeight = $image.height();
+	}
+
 	$imagePanel.css({
 		top: positionCloseTopT2,
 		left: positionCloseLeftT2,
@@ -123,6 +130,14 @@ galleryPlugin.clickImage = function() {
 		$currentImage = $(this);
 		// $('figcaption').fadeTo(500,1);
 		
+
+		//If window has been resized, check the imageWidth give it a new value 
+		//(so on close the imagePanel will match the grid image size)
+		if(!(imageWidth===$image.width())) {
+			imageWidth = $image.width();
+			imageHeight = $image.height();
+		}
+
 		//set the background image to corresponding image clicked
 		galleryPlugin.changeBackgroundImage();
 		galleryPlugin.retrieveCaptionData();
@@ -184,6 +199,7 @@ galleryPlugin.hideCaption = function() {
 
 galleryPlugin.closeImage = function(){
 	$close.on('click', function(){
+
 
 		//hide the caption if caption is visible
 		galleryPlugin.hideCaption();
